@@ -2,9 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- 拨打电话需要的权限 -->
-    <uses-permission android:name="android.permission.CALL_PHONE" />
-
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -24,12 +21,14 @@
         </activity>
 
         <!-- Main2Activity (显式跳转目标) -->
-        <activity android:name=".Main2Activity" />
+        <activity android:name=".Main2Activity"
+            android:exported="false"/>
 
         <!-- Main3Activity (隐式跳转目标) -->
         <activity
             android:name=".Main3Activity"
-            android:exported="false">
+            android:exported="false"
+            android:launchMode="singleTop">
             <intent-filter>
                 <!-- (2) 自定义 Action -->
                 <action android:name="android.intent.action.MAIN3" />
@@ -39,4 +38,6 @@
         </activity>
     </application>
 
+    <uses-permission android:name="android.permission.READ_CONTACTS"
+        tools:ignore="ManifestOrder"/>
 </manifest>
